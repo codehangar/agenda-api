@@ -8,7 +8,7 @@ var validator = require('validator'),
 var userPostValidation = function(req, res, next) {
 	var errors = {};
 
-	if(!req.body.title) {
+	if(!req.body.agenda.title) {
 		errors.email = ['Agenda Title is a required field'];
 	} else {
 		// if(!validator.isEmail(req.body.email)) {
@@ -16,12 +16,12 @@ var userPostValidation = function(req, res, next) {
 		// }
 	}
 
-	// if(!req.body.password) {
-	// 	errors.password = ['Password is a required field'];
+	// if(!req.body.headers['x-acess-token']) {
+	// 	errors.password = ['Session token is required'];
 	// } else {
-	// 	if(!validator.isLength(req.body.password, { min: 8, max: 16})) {
-	// 		errors.password = ['Password must be between 8 and 16 characters'];
-	// 	}
+	// 	// if(!validator.isLength(req.body.password, { min: 8, max: 16})) {
+	// 	// 	errors.password = ['Password must be between 8 and 16 characters'];
+	// 	// }
 	// }
 
 	// If the errors object is not empty then send validation errors
