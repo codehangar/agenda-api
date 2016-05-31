@@ -21,12 +21,14 @@ co(function *() {
 	yield RethinkDbService.createDb(conn, database);
 	// Lets create any tables that do not exist
 	yield RethinkDbService.createTable(conn, database, 'user', 'id');
+	yield RethinkDbService.createTable(conn, database, 'agenda', 'id');
 	yield RethinkDbService.createTable(conn, database, 'stripeSubscription', 'id');
 	yield RethinkDbService.createTable(conn, database, 'stripeInvoice', 'id');
 	yield RethinkDbService.createTable(conn, database, 'stripeTransactionLog', 'id');
 	yield RethinkDbService.createTable(conn, database, 'stripeEventLog', 'id');
 	// Lets create any indices that do not exist
 	yield RethinkDbService.createIndex(conn, database, 'user', 'email');
+	yield RethinkDbService.createIndex(conn, database, 'agenda', 'userId');
 	yield RethinkDbService.createIndex(conn, database, 'stripeSubscription', 'parentId');
 	yield RethinkDbService.createIndex(conn, database, 'stripeInvoice', 'subscriptionId');
 

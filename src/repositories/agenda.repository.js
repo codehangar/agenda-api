@@ -31,23 +31,23 @@ AgendaRepository.prototype.create = function(agenda) {
  * @param {Object} User Object
  * @returns {Promise}
  */
-// AgendaRepository.prototype.getByEmail = function(email) {
-//   return new Promise(function(resolve, reject) {
-//     co(function*() {
-//       // Get a open db connection
-//       var conn = yield RethinkDbService.getDatabaseConnection();
-//       // Find email
-//       var results = yield r.table('user').getAll(email, {
-//         index: 'email'
-//       }).run(conn);
-//       results = yield results.toArray();
-//       conn.close();
-//       resolve(results[0]);
-//     }).catch(function(e) {
-//       reject(e);
-//     });
-//   });
-// };
+AgendaRepository.prototype.agendaGetAllByUserId = function(userId) {
+  return new Promise(function(resolve, reject) {
+    co(function*() {
+      // Get a open db connection
+      var conn = yield RethinkDbService.getDatabaseConnection();
+      // Find email
+      var results = yield r.table('agenda').getAll(userId, {
+        index: 'userId'
+      }).run(conn);
+      results = yield results.toArray();
+      conn.close();
+      resolve(results[0]);
+    }).catch(function(e) {
+      reject(e);
+    });
+  });
+};
 
 /**
  * Update User Record
